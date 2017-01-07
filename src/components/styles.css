@@ -1,0 +1,82 @@
+@import '../styles/_colors';
+@import '../styles/_variables';
+
+.rootMain {
+  color: var(--charcoal);
+  background-color: var(--gainsboro);
+
+  border-color: transparent rgba(0,0,0,0.2) rgba(0,0,0,0.5);
+  /*
+  background-image: url('./asfalt-dark.png');
+  background-color: var(--gainsboro);
+  */
+}
+
+section.center {
+  background-color: var(--charcoal);
+  border-bottom-color: rgba(0,0,0,0.5);
+  /*
+  background-image: url('./45-degree-fabric-dark.png');
+  background-color: var(--heidelbergRed);
+  */
+}
+
+.rootMain {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  box-shadow: var(--zdepth-shadow-2);
+  border-radius: 1rem;
+
+  border-width: 0 0.5rem 0.5rem;
+  border-style: none solid solid;
+}
+
+section.left,
+section.right {
+  padding: 1rem;
+  display: flex;
+}
+
+section.right {
+  flex-flow: column-reverse nowrap;
+  align-items: flex-end;
+}
+
+section.right p {
+  margin: 0;
+}
+
+section.center {
+  overflow: hidden;
+  flex: 0 0 960px;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: var(--zdepth-shadow-3);
+  position: relative;
+  top: -0.25rem;
+  height: calc(100% + 0.75rem);
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  border-bottom-width: 0.5rem;
+  border-bottom-style: solid;
+}
+
+.gameField {
+  flex: 1 0 auto;
+}
+
+.cardSpace {
+  width:  8rem;
+  height: 8rem;
+  padding: 1rem;
+}
+
+.glCanvas {
+  border: 2px dashed #400;
+}

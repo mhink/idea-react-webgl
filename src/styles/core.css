@@ -1,0 +1,68 @@
+@import './_colors.css';
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--charcoal);
+  background: black;
+  /*
+  background-image: url('./purty-wood.png');
+  background-color: var(--darkSienna);
+  */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: inherit;
+}
+
+:global .ReactModal__Body--open {
+  overflow: hidden;
+}
+
+:global #root {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+@media (max-height: 900px) {
+  :global #root {
+    height: 100%;
+    align-items: flex-start;
+  }
+}
+
+@media (min-height: 900px) {
+  :global #root {
+    height: 100vh;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1600px) {
+  :global #root {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1600px) {
+  :global #root {
+    width: 100vw;
+    justify-content: center;
+  }
+}
+
+:global #root > main {
+  width: 1600px;
+  min-width: 1600px;
+  height: 900px;
+  min-height: 900px;
+}

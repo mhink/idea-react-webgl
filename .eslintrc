@@ -1,0 +1,54 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "formidable/configurations/es6-react",
+    "formidable/configurations/es6-browser",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "import",
+    "react",
+    "redux-saga",
+    "flowtype"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "config/webpack.config.js"
+      }
+    }
+  },
+  "rules": {
+    "react/sort-prop-types": 0,
+    "filenames/match-regex": ["error", "^[a-z0-9\\-\\.]+$", true],
+    "comma-dangle": ["error", "always-multiline"],
+    "arrow-parens": ["error", "as-needed"],
+    "no-magic-numbers": 0,
+    "no-unused-vars": ["error", { "args": "none" }],
+    "no-extra-parens": 0,
+    "new-cap": ["error", {
+      capIsNewExceptions: [
+        "DragSource",
+        "DropTarget",
+        "DragLayer",
+        "DragDropContext",
+        "HTML5Backend"
+      ] 
+    }],
+    "generator-star-spacing": ["error", { "before": false, "after": true }],
+    "no-constant-condition": 0,
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "no-console": ["error", { "allow": ["warn", "error"]}],
+    "key-spacing": ["error", {
+      "singleLine": {
+        "beforeColon": false,
+        "afterColon": true,
+      },
+      "multiLine": {
+        "beforeColon": true,
+        "afterColon": true,
+        "align": "colon",
+      },
+    }]
+  }
+}
