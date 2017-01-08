@@ -1,5 +1,10 @@
 import React, { PropTypes, cloneElement } from "react";
 import WebGLCanvas from './WebGLCanvas';
+import WebGLProgram from './WebGLProgram';
+import { VertexShader, FragmentShader } from './WebGLShader';
+
+import vertexSource from 'shaders/simple.vs';
+import fragmentSource from 'shaders/simple.fs';
 
 import {
   rootMain,
@@ -10,17 +15,12 @@ import {
   cardSpace
 } from "./styles.css";
 
-export default class Root extends React.Component {
-  render() {
-    return (
-      <main className={rootMain}>
-        <section className={left} />
-        <section className={center}>
-          <WebGLCanvas width={640} height={480}>
-          </WebGLCanvas>
-        </section>
-        <section className={right} />
-      </main>
-    );
-  }
-}
+const Root = ({ children }) => (
+  <main className={rootMain}>
+    <section className={center}>
+      { children }
+    </section>
+  </main>
+);
+
+export default Root;

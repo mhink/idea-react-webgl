@@ -11,6 +11,9 @@ const paths = {
 };
 
 module.exports = {
+  performance: {
+    hints: false
+  },
   target  : 'web',
   devtool : 'source-map',
   entry   : {
