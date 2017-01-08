@@ -50,7 +50,7 @@ class Demo extends React.Component {
             source={fragmentSource}
             onCompile={this.setFragmentShader} />
           { shadersReady && 
-            <ClearViewport />
+            <ClearViewport color={[0.0, 0.0, 0.0, 1.0]} />
           }
         </WebGLProgram>
       </WebGLCanvas>

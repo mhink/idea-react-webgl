@@ -13,22 +13,30 @@ export default class WebGLCanvas extends React.Component {
 
   static childContextTypes = {
     gl: PropTypes.object,
-    viewportWidth: PropTypes.number,
-    viewportHeight: PropTypes.number,
   };
 
   getChildContext() {
     return {
       gl: this.state.gl,
-      viewportWidth: this.props.width,
-      viewportHeight: this.props.height,
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({
       gl: this._canvas.getContext('webgl')
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { gl: currGl, width: currWidth, height: currHeight } = this.props;
+    const { gl: prevGl, width: prevWidth, height: prevHeight } = prevProps;
+    if (
+      currGl !== prevGl
+    || currWidth !== prevWidth
+    || currHeight !== prevHeight
+    ) {
+      currGl.viewport(0, 0, currWidth, currHeight);
+    }
   }
 
   render () {
