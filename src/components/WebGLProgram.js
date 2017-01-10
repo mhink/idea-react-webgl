@@ -5,7 +5,7 @@ export default class WebGLProgram extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      program: null,
+      handle: null,
       linked: false,
     };
   }
@@ -15,31 +15,31 @@ export default class WebGLProgram extends React.Component {
   }
 
   static childContextTypes = {
-    program: PropTypes.object,
+    programHandle: PropTypes.object,
   }
 
   getChildContext() {
-    return { program: this.state.program };
+    return { programHandle: this.state.handle};
   }
 
   componentDidUpdate() {
     const { ready, shaders } = this.props;
-    const { program, linked } = this.state;
+    const { handle, linked } = this.state;
     const { gl } = this.context;
 
-    if (gl && !program) {
+    if (gl && !handle) {
       this.setState({
-        program: gl.createProgram()
+        handle: gl.createProgram()
       });
       return;
     }
 
-    if (gl && program && !linked && ready) {
+    if (gl && handle && !linked && ready) {
       for (const shader of shaders) {
-        gl.attachShader(program, shader);
+        gl.attachShader(handle, shader);
       }
-      gl.linkProgram(program);
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      gl.linkProgram(handle);
+      if (!gl.getProgramParameter(handle, gl.LINK_STATUS)) {
         throw new Error("Could not link program!");
       }
       this.setState({
@@ -51,10 +51,10 @@ export default class WebGLProgram extends React.Component {
 
   componentWillUnmount() {
     const { gl } = this.context;
-    const { program } = this.state;
-    gl.deleteProgram(program);
+    const { handle } = this.state;
+    gl.deleteProgram(handle);
     this.setState({
-      program: null
+      handle: null
     });
   }
 

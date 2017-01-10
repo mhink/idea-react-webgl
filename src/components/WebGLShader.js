@@ -5,7 +5,7 @@ export default class WebGLShader extends React.Component {
     super(props);
 
     this.state = {
-      shader: null,
+      handle: null,
       compiled: false,
     };
   }
@@ -17,27 +17,27 @@ export default class WebGLShader extends React.Component {
 
   static contextTypes = {
     gl: PropTypes.object,
-    program: PropTypes.object
+    programHandle: PropTypes.object
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { gl, program } = this.context;
+    const { gl, programHandle } = this.context;
     const { type, source, onCompile } = this.props;
     const { compiled } = this.state;
 
-    if (gl && program && !compiled) {
-      const shader = gl.createShader(gl[type]);
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        gl.deleteShader(shader);
+    if (gl && programHandle && !compiled) {
+      const handle = gl.createShader(gl[type]);
+      gl.shaderSource(handle, source);
+      gl.compileShader(handle);
+      if (!gl.getShaderParameter(handle, gl.COMPILE_STATUS)) {
+        gl.deleteShader(handle);
         throw new Error("Could not compile shader!");
       }
       this.setState({
-        shader,
+        handle,
         compiled: true,
       }, () => {
-        onCompile(shader);
+        onCompile(handle);
       });
     }
   }
